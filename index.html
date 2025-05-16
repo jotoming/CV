@@ -4,13 +4,46 @@
   <meta charset="UTF-8">
   <title>Joonas Tomingas - CV API</title>
   <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border-bottom: 1px solid #ccc;
+    }
+    .header img {
+      width: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .header-text h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .header-text p {
+      margin: 5px 0 0;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
+  <div class="header">
+    <img src="profile.jpg" alt="Joonas Tomingas">
+    <div class="header-text">
+      <h1>Joonas Tomingas</h1>
+      <p>Software Developer | CV API powered by Swagger</p>
+    </div>
+  </div>
   <div id="swagger-ui"></div>
   <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
   <script>
-    const ui = SwaggerUIBundle({
-      url: "cv-eng-api.yaml",
+    SwaggerUIBundle({
+      url: "cv-api.yaml",
       dom_id: "#swagger-ui"
     });
   </script>
