@@ -4,7 +4,7 @@ info:
   description: A Swagger-based documentation of Joonas Tomingas's professional profile.
   version: 1.0.0
 servers:
-  - url: https://joonas-cv.example.com/api
+  - url: https://cv.com/api?lang=en
 
 paths:
   /personal-info:
@@ -29,7 +29,19 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/EducationEntry'
+              example:
+                - institution: University of Tartu
+                  field: Mathematical statistics, Computer Science
+                  startAt: 2016
+                  endAt: 2019
+                - institution: IT Technology College of Estonia
+                  field: IT Systems Development
+                  startAt: 2015
+                  endAt: 2016  
+                - institution: Hugo Treffner Gymnasium
+                  field: Science
+                  startAt: 2012
+                  endAt: 2015
 
   /experience:
     get:
@@ -43,6 +55,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WorkEntry'
+                example:
+                  - company: Astro Baltics OÜ
+                    role: Software developer
+                    startAt: 2024
+                    endAt: 
+                  - company: Riverty
+                    role: Software developer
+                    startAt: 2021
+                    endAt: 2024  
+                  - company: Jaan Poska Gymnasium
+                    role: Java programming course teacher
+                    startAt: 2020
+                    endAt: 2021  
+                  - company: Astro Baltics OÜ
+                    role: Software developer
+                    startAt: 2019
+                    endAt: 2021  
+                  - company: Estonian Literary Museum
+                    role: Programmer/Data analyst
+                    startAt: 2018
+                    endAt: 2019
 
   /skills/languages:
     get:
@@ -56,6 +89,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/LanguageSkill'
+                example:
+                  - language: Estonian
+                    proficiency: Native speaker
+                  - language: English
+                    proficiency: Advanced
+                  - language: Russian
+                    proficiency: Intermediate
 
   /driving-licence:
     get:
@@ -66,9 +106,16 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
+                type: object
+                properties: 
+                  categories:
+                    type: array
+                    items: 
+                      type: string
+                    example:
+                      - A
+                      - B
+                      
 
 components:
   schemas:
@@ -90,7 +137,7 @@ components:
           example: joonas2701@gmail.com
         address:
           type: string
-          example: Pikk 98-14
+          example: Pikk 98-14, Tartu
 
     EducationEntry:
       type: object
@@ -99,7 +146,9 @@ components:
           type: string
         field:
           type: string
-        period:
+        startAt:
+          type: string
+        endAt:
           type: string
 
     WorkEntry:
