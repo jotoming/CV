@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: Joonas Tomingas - CV API
+  description: A Swagger-based documentation of Joonas Tomingas's professional profile.
+  version: 1.0.0
+servers:
+  - url: https://joonas-cv.example.com/api
+
+paths:
+  /personal-info:
+    get:
+      summary: Get personal information
+      responses:
+        '200':
+          description: Personal information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalInfo'
+
+  /education:
+    get:
+      summary: Get education history
+      responses:
+        '200':
+          description: Education history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EducationEntry'
+
+  /experience:
+    get:
+      summary: Get work experience
+      responses:
+        '200':
+          description: Work experience
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkEntry'
+
+  /skills/languages:
+    get:
+      summary: Get spoken languages
+      responses:
+        '200':
+          description: Languages spoken
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LanguageSkill'
+
+  /driving-licence:
+    get:
+      summary: Get driving licence categories
+      responses:
+        '200':
+          description: Driving licence info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+components:
+  schemas:
+    PersonalInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Joonas Tomingas
+        dateOfBirth:
+          type: string
+          format: date
+          example: 1996-01-27
+        telephone:
+          type: string
+          example: +372 55645543
+        email:
+          type: string
+          example: joonas2701@gmail.com
+        address:
+          type: string
+          example: Pikk 98-14
+
+    EducationEntry:
+      type: object
+      properties:
+        institution:
+          type: string
+        field:
+          type: string
+        period:
+          type: string
+
+    WorkEntry:
+      type: object
+      properties:
+        period:
+          type: string
+        company:
+          type: string
+        role:
+          type: string
+
+    LanguageSkill:
+      type: object
+      properties:
+        language:
+          type: string
+        proficiency:
+          type: string
